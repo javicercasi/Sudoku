@@ -1,7 +1,7 @@
 from sudo import Sudoku
-#from API import API
-#import sys
-#import math
+from api import api
+import sys
+import math
 
 
 class UserInput():
@@ -53,24 +53,14 @@ class UserInput():
             print("Ingresaste un valor no permitido, intentalo de nuevo")
 
     def play(self):
-        jugar = Sudoku(["53xx7xxxx",
-                        "6xx195xxx",
-                        "x98xxxx6x",
-                        "8xxx6xxx3",
-                        "4xx8x3xx1",
-                        "7xxx2xxx6",
-                        "x6xxxx28x",
-                        "xxx419xx5",
-                        "xxxx8xx79"])
-        self.ingresar_dimension()
+        jugar = Sudoku(api(self.ingresar_dimension()))      #El resultado de la api se lo envia a la clase Sudoku
         # crear sudoku...
         while not jugar.fin_juego():
             # mostrar tablero
             jugar.tablero()
-            x, y, n = self.ingresar_valor(self.tamano)
+            x, y, n = self.ingresar_valor(self.tamano)      #Le envia el valor del tamano al metodo ingresar_valor
             jugar.escribir(x, y, n)
-            # jugar.
-            # poner en el sudoku...
+            
 
 
 if __name__ == "__main__":

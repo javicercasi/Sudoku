@@ -2,7 +2,10 @@ import requests
 
 
 def api(tamano):
-    resp = requests.get('http://www.cs.utep.edu/cheon/ws/sudoku/new/?level=1&size=' + str(tamano))
+
+    url = 'http://www.cs.utep.edu/cheon/ws/sudoku/new/?level=1&size='
+    url += str(tamano)
+    resp = requests.get(url)
     if tamano == 9:
         lista = [["x", "x", "x", "x", "x", "x", "x", "x", "x"],
                  ["x", "x", "x", "x", "x", "x", "x", "x", "x"],
