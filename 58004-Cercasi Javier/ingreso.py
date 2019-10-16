@@ -4,7 +4,7 @@ import sys
 import math
 
 
-class UserInput():
+class Interfaz():
 
     def ingreso_numero(self, valor, tamano):
         if(valor > 0 and valor <= tamano):
@@ -53,7 +53,9 @@ class UserInput():
             print("Ingresaste un valor no permitido, intentalo de nuevo")
 
     def play(self):
-        jugar = Sudoku(api(self.ingresar_dimension()))      #El resultado de la api se lo envia a la clase Sudoku
+        print("\n\n         BIENVENIDO AL SUDOKU        \n\n")
+        print(math.sqrt(9))
+        jugar = Sudoku(api(self.ingresar_dimension()),self.tamano)      #El resultado de la api se lo envia a la clase Sudoku
         # crear sudoku...
         while not jugar.fin_juego():
             # mostrar tablero
@@ -64,5 +66,5 @@ class UserInput():
 
 
 if __name__ == "__main__":
-    u = UserInput()
-    u.play()
+    I = Interfaz()
+    I.play()

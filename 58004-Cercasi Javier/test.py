@@ -58,9 +58,24 @@ class TestSudoku(unittest.TestCase):
 
     def test_ingreso_incorrecto_por_repeticion(self):
         self.assertTrue(self.game.escribir(8,0,'3'),'x')
-        
-    #def test_game_over(self):
-    #self.assertEqual(self.game.juego_termiando(tabla_completa), True)
 
+    def test_game_over_1(self):
+        
+        self.game = Sudoku(["533175384", "612195537", "298376369", "882668363",
+                 "481863981", "717328356", "169836281", "916419925",
+                 "816288179"])
+
+        self.assertEqual(self.game.fin_juego(), True)
+
+    def test_game_over_2(self):
+        
+        self.game = Sudoku(["533175384", "612195537", "298376369", "882668363",
+                 "481863981", "71732x356", "169836281", "916419925",
+                 "816288179"])
+
+        self.assertEqual(self.game.fin_juego(), False)
+        
+  
+  
 if __name__ == '__main__':
     unittest.main()

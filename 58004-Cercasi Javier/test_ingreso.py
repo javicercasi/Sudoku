@@ -1,11 +1,11 @@
 import unittest
 
-from ingreso import UserInput
+from ingreso import Interfaz
 
 class TestIngreso(unittest.TestCase):
 
     def setUp(self):
-        self.valor = UserInput()
+        self.valor = Interfaz()
         self.tamaño = 9
 
     def test_numero_mayor(self):

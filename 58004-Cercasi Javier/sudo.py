@@ -1,4 +1,3 @@
-import copy
 
 class Sudoku():
 
@@ -91,7 +90,7 @@ class Sudoku():
         for i in range(9):
                 if ("x" in self.matriz[i]):
                     return False
-            
+        print("Fin del juego")  
         return True
 
     def tablero (self):
