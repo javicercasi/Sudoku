@@ -6,8 +6,8 @@ import math
 
 class UserInput():
 
-    def ingreso_numero(self, number, tamano):
-        if(number > 0 and number <= tamano):
+    def ingreso_numero(self, valor, tamano):
+        if(valor > 0 and valor <= tamano):
             return True
         else:
             return False
@@ -33,22 +33,22 @@ class UserInput():
                 print("Ingresaste un tamano no permitido, intentalo de nuevo")
 
     def ingresar_valor(self, tamano):
-        number = 0
+        valor = 0
         fila = 0
         columna = 0
-        while self.ingreso_numero(number, tamano) is False or self.ingreso_coordenadas(fila,
+        while self.ingreso_numero(valor, tamano) is False or self.ingreso_coordenadas(fila,
                                                                                        columna,
                                                                                        tamano) is False:
             try:
                 fila = int(input("\n\nFila: "))
                 columna = int(input("Columna: "))
-                number = int(input("Valor de la casilla: "))
+                valor = int(input("Valor de la casilla: "))
             except ValueError:
                 pass
-            if (self.ingreso_numero(number, tamano) and self.ingreso_coordenadas(fila,
+            if (self.ingreso_numero(valor, tamano) and self.ingreso_coordenadas(fila,
                                                                                  columna,
                                                                                  tamano)):
-                return fila - 1, columna - 1, number
+                return fila - 1, columna - 1, valor
 
             print("Ingresaste un valor no permitido, intentalo de nuevo")
 
