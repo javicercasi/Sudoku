@@ -1,17 +1,19 @@
+import sys
+import math
 
 class Sudoku():
 
-    def __init__(self, tabla):
+    def __init__(self, tabla, tamano):
+        self.tamano = tamano 
         self.is_playing = True
-        self.matriz = [ [ 0 for __ in range(9) ] for _ in range(9) ]
-        self.fijos = [ [ 0 for __ in range(9) ] for _ in range(9) ]
+        self.matriz = [ [ 0 for __ in range(self.tamano) ] for _ in range(self.tamano) ]
+        self.fijos = [ [ 0 for __ in range(self.tamano) ] for _ in range(self.tamano) ]
         self.string_converter(tabla)
 
     def string_converter(self,tabla):
         #Este metodo chequeara las posiciones de los valores fijos
-        large=len(tabla)
-        for i in range (len(tabla)):
-            for j in range (9):
+        for i in range (self.tamano):
+            for j in range (self.tamano):
                 self.matriz[i][j]=tabla[i][j]
                 self.fijos[i][j]=tabla[i][j] 
 
@@ -24,7 +26,7 @@ class Sudoku():
     def repeticion_fila_columna(self,fila,columna,valor):
         #Chequearemos las columnas, dejando cada fila fija
         
-        for i in range(9):
+        for i in range(self.tamano):
             if self.matriz[i][columna]== valor:
                 return (False)
 
@@ -35,22 +37,23 @@ class Sudoku():
         return True
 
     def repeticion_zona(self, fila, columna, valor):
-        if (fila < 3):
+        if (fila < int(math.sqrt(self.tamano ))):
             fila = 0
-        elif (fila >= 3 and fila < 6):
-            fila = 3
-        else:
-            fila = 6
-        
-        if (columna < 3):
-            columna = 0
-        elif (columna >= 3 and columna < 6):
-            columna = 3
-        else:
-            columna = 6
 
-        for i in range(3):
-            for j in range(3):
+        elif (fila >= int(math.sqrt(self.tamano)) and fila < int(math.sqrt(self.tamano)*2)):
+            fila = int(math.sqrt(self.tamano))
+        else:
+            fila = int(math.sqrt(self.tamano )*2)
+        
+        if (columna < int(math.sqrt(self.tamano ))):
+            columna = 0
+        elif (columna >= int(math.sqrt(self.tamano)) and columna < int(math.sqrt(self.tamano )*2)):
+            columna = int(math.sqrt(self.tamano))
+        else:
+            columna = int(math.sqrt(self.tamano )*2)
+
+        for i in range(int(math.sqrt(self.tamano))):
+            for j in range(int(math.sqrt(self.tamano))):
                 if (self.matriz[fila + i][columna + j] == valor):
                     return False
          
@@ -73,7 +76,7 @@ class Sudoku():
             print("Valor repetido en el bloque")
         else:
             paso += 1
-        if paso == 3:
+        if paso == (9 or 4):
             return True
         else:
             return False
@@ -87,7 +90,8 @@ class Sudoku():
         return (self.matriz[fila][columna])
 
     def fin_juego(self):
-        for i in range(9):
+        print("\n")
+        for i in range(self.tamano ):
                 if ("x" in self.matriz[i]):
                     return False
         print("Fin del juego")  
@@ -96,5 +100,5 @@ class Sudoku():
     def tablero (self):
         for i in self.matriz:
             for j in i:
-                print(j,end=' ')
+                print(j,end=' | ')
             print(" ")

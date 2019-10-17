@@ -53,12 +53,13 @@ class Interfaz():
             print("Ingresaste un valor no permitido, intentalo de nuevo")
 
     def play(self):
-        print("\n\n         BIENVENIDO AL SUDOKU        \n\n")
-        print(math.sqrt(9))
+        
+        print("\n\n         BIENVENIDO A9L SUDOKU        \n\n")
         jugar = Sudoku(api(self.ingresar_dimension()),self.tamano)      #El resultado de la api se lo envia a la clase Sudoku
         # crear sudoku...
         while not jugar.fin_juego():
             # mostrar tablero
+            
             jugar.tablero()
             x, y, n = self.ingresar_valor(self.tamano)      #Le envia el valor del tamano al metodo ingresar_valor
             jugar.escribir(x, y, n)
