@@ -54,15 +54,17 @@ class Interfaz():
 
     def play(self):
         
-        print("\n\n         BIENVENIDO A9L SUDOKU        \n\n")
+        print("\n\n         BIENVENIDO AL SUDOKU        \n\n")
         jugar = Sudoku(api(self.ingresar_dimension()),self.tamano)      #El resultado de la api se lo envia a la clase Sudoku
-        # crear sudoku...
+        
         while not jugar.fin_juego():
-            # mostrar tablero
             
-            jugar.tablero()
+            print(jugar.tablero())      # mostrar tablero
             x, y, n = self.ingresar_valor(self.tamano)      #Le envia el valor del tamano al metodo ingresar_valor
             jugar.escribir(x, y, n)
+
+        if jugar.fin_juego is True:
+           print("             Has ganado!!!! Fin del juego             \n")
             
 
 

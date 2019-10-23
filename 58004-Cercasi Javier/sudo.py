@@ -63,20 +63,20 @@ class Sudoku():
         paso = 0
 
         if self.valores_fijos(fila, columna) is False:
-            print("Valor fijado de fabrica")
+            print("\nValor fijado de fabrica")
         else:
             paso += 1
 
         if self.repeticion_fila_columna(fila, columna,valor) is False:
-            print("Valor repetido en fila y/o columna")
+            print("\nValor repetido en fila y/o columna")
         else:
             paso += 1
  
         if self.repeticion_zona(fila, columna, valor) is False:
-            print("Valor repetido en el bloque")
+            print("\nValor repetido en el bloque")
         else:
             paso += 1
-        if paso == (9 or 4):
+        if paso == 3:
             return True
         else:
             return False
@@ -84,8 +84,8 @@ class Sudoku():
     
     def escribir(self,fila,columna,valor):
 
-        if self.general(fila,columna,str(valor)) is True:
-            self.matriz[fila][columna] = valor
+        if self.general(fila,columna,str(valor)):
+            self.matriz[fila][columna] = str(valor)
             
         return (self.matriz[fila][columna])
 
@@ -94,11 +94,11 @@ class Sudoku():
         for i in range(self.tamano ):
                 if ("x" in self.matriz[i]):
                     return False
-        print("Fin del juego")  
         return True
 
     def tablero (self):
-        for i in self.matriz:
-            for j in i:
-                print(j,end=' | ')
-            print(" ")
+        a = ''
+        for fila in self.matriz:
+            a += ' | '.join(fila)
+            a += '\n'
+        return a
