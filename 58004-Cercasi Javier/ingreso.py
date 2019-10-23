@@ -32,7 +32,7 @@ class Interfaz():
             except ValueError:
                 print("Ingresaste un tamano no permitido, intentalo de nuevo")
 
-    def ingresar_valor(self, tamano):
+    def ingresar_valor(self,jugar, tamano):
         valor = 0
         fila = 0
         columna = 0
@@ -48,6 +48,16 @@ class Interfaz():
             if (self.ingreso_numero(valor, tamano) and self.ingreso_coordenadas(fila,
                                                                                  columna,
                                                                                  tamano)):
+
+                if jugar.valores_fijos(fila - 1, columna - 1) is False:
+                    print("\nValor fijado de fabrica")
+
+                if jugar.repeticion_fila_columna(fila - 1, columna - 1,str(valor)) is False:
+                    print("\nValor repetido en fila y/o columna")
+
+                if jugar.repeticion_zona(fila - 1,columna - 1,str(valor)) is False:
+                    print("\nValor repetido en el bloque")
+
                 return fila - 1, columna - 1, valor
 
             print("Ingresaste un valor no permitido, intentalo de nuevo")
@@ -60,11 +70,12 @@ class Interfaz():
         while not jugar.fin_juego():
             
             print(jugar.tablero())      # mostrar tablero
-            x, y, n = self.ingresar_valor(self.tamano)      #Le envia el valor del tamano al metodo ingresar_valor
+            x, y, n = self.ingresar_valor(jugar,self.tamano)      #Le envia el valor del tamano al metodo ingresar_valor
             jugar.escribir(x, y, n)
+    
+        print("             Has ganado!!!! Fin del juego             \n")
 
-        if jugar.fin_juego is True:
-           print("             Has ganado!!!! Fin del juego             \n")
+        
             
 
 

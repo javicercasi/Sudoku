@@ -63,17 +63,17 @@ class Sudoku():
         paso = 0
 
         if self.valores_fijos(fila, columna) is False:
-            print("\nValor fijado de fabrica")
+            paso += 0
         else:
             paso += 1
 
         if self.repeticion_fila_columna(fila, columna,valor) is False:
-            print("\nValor repetido en fila y/o columna")
+            paso += 0
         else:
             paso += 1
  
         if self.repeticion_zona(fila, columna, valor) is False:
-            print("\nValor repetido en el bloque")
+            paso += 0
         else:
             paso += 1
         if paso == 3:
