@@ -28,7 +28,9 @@ class TestSudoku(unittest.TestCase):
 
     @parameterized.expand([
         (8,6,'8'),
-        (2,0,'7')
+        (2,0,'7'),
+        (2,8,'9'),
+        (8,3,'1')
     ])
     def test_error_fila_repetida_9x9(self,fila,columna,valor):
     
@@ -79,10 +81,10 @@ class TestSudoku(unittest.TestCase):
                  "816288179"],9)
 
         self.assertEqual(self.game.fin_juego(), False)
-'''
+
     def test_error_escribir_en_fijo_4x4(self):
         
-        self.game=Sudoku(  ["432x",
+        self.game=  Sudoku( ["432x",
                             "x1x3",
                             "xxxx",
                             "143x"],4)
@@ -90,18 +92,19 @@ class TestSudoku(unittest.TestCase):
         self.assertFalse(self.game.valores_fijos(0,0))
 
     def test_test_ingreso_correcto_4x4(self):
-        
-        self.assertTrue(self.game.general(0,3,'3'))
-        self.assertEqual(self.game.escribir(0,7,'3'),'3')
-        
-        self.game=Sudoku(  ["432x",
+
+        self.game=  Sudoku( ["432x",
                             "x1x3",
                             "xxxx",
-                            "143x"],4)
+                            "143x"],4)  
+        
+        self.assertTrue(self.game.general(0,3,'1'))
+        self.assertEqual(self.game.escribir(0,3,'1'),'1')
+        
+        
 
-        self.assertFalse(self.game.valores_fijos(0,0))
+    
 
-    '''
 
     
 
