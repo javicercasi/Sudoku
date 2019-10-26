@@ -26,6 +26,11 @@ class TestIngreso(unittest.TestCase):
     def test_posicion_3(self):
         self.assertEqual(self.valor.ingreso_coordenadas(14, 8, self.tamaño), False)
 
+    def test_posicion_3(self):
+        self.assertEqual(self.valor.ingreso_coordenadas(2, 4, self.tamaño), True)
+
+    def test_dimension_correcta(self):
+        self.assertEqual(self.valor.ingresar_dimension(4),4)
 
 
 
