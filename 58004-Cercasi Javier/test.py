@@ -17,6 +17,11 @@ class TestSudoku(unittest.TestCase):
                             "xxxx8xx79"], 9)
         self.assertTrue(self.game.is_playing)
 
+        self.game_4 = Sudoku (["432x",
+                            "x1x3",
+                            "xxxx",
+                            "143x"], 4)
+
     def test_error_escribir_en_fijo_9x9(self):
 
         self.assertFalse(self.game.valores_fijos(0, 0))
@@ -84,22 +89,13 @@ class TestSudoku(unittest.TestCase):
 
     def test_error_escribir_en_fijo_4x4(self):
 
-        self.game = Sudoku(["432x",
-                            "x1x3",
-                            "xxxx",
-                            "143x"], 4)
-
-        self.assertFalse(self.game.valores_fijos(0, 0))
+        self.assertFalse(self.game_4.valores_fijos(0, 0))
 
     def test_test_ingreso_correcto_4x4(self):
 
-        self.game = Sudoku(["432x",
-                            "x1x3",
-                            "xxxx",
-                            "143x"], 4)
 
-        self.assertTrue(self.game.general(0, 3, '1'))
-        self.assertEqual(self.game.escribir(0, 3, '1'), '1')
+        self.assertTrue(self.game_4.general(0, 3, '1'))
+        self.assertEqual(self.game_4.escribir(0, 3, '1'), '1')
 
     @parameterized.expand([
         (0, 3, '1'),
@@ -110,14 +106,25 @@ class TestSudoku(unittest.TestCase):
     ])
     def test_ingreso_correcto_4x4(self, fila, columna, valor):
 
-        self.game = Sudoku(["432x",
-                            "x1x3",
-                            "xxxx",
-                            "143x"], 4)
 
-        self.assertTrue(self.game.general(fila, columna, valor))
-        self.assertEqual(self.game.escribir(fila, columna, valor), valor)
+        self.assertTrue(self.game_4.general(fila, columna, valor))
+        self.assertEqual(self.game_4.escribir(fila, columna, valor), valor)
 
+    @parameterized.expand([
+        (1,0,'1'),
+        (1,0,'4'),
+        (2,1,'3')
+    ])
+    def test_control_repetido_4x4(self,fila,columna,valor):
+        self.assertEqual(self.game_4.repeticion_fila_columna(fila,columna,valor), False)
+
+    @parameterized.expand([
+        (2,3,'4'),
+        (1,2,'4'),
+        (0,3,'1')
+    ])
+    def test_control_correcto_4x4(self,fila,columna,valor):
+        self.assertEqual(self.game_4.repeticion_fila_columna(fila,columna,valor), True)
 
 if __name__ == '__main__':
     unittest.main()
