@@ -1,6 +1,8 @@
 import unittest
-
+from unittest.mock import patch, MagicMock
+import unittest.mock
 from ingreso import Interfaz
+from parameterized import parameterized
 
 class TestIngreso(unittest.TestCase):
 
@@ -28,10 +30,31 @@ class TestIngreso(unittest.TestCase):
 
     def test_posicion_3(self):
         self.assertEqual(self.valor.ingreso_coordenadas(2, 4, self.tamaño), True)
-
+    
     def test_dimension_correcta(self):
-        self.assertEqual(self.valor.ingresar_dimension(4),4)
+        self.assertTrue(self.valor.dimension(4))
 
+    def test_dimension_incorrecta(self):
+        self.assertFalse(self.valor.dimension(25))
+
+    def test_dimension_incorrecta_2(self):
+        self.assertFalse(self.valor.dimension('asdasd'))
+
+    def test_dimension_incorrecta_3(self):
+        self.assertFalse(self.valor.dimension('0'))
+
+    def escribir_valor_incorrecto_9x9(self):
+        self.assertEqual(self.valor.ingreso_numero('x', self.tamaño), False)
+
+    def test_posicion_4x4(self):
+        self.tamaño=4
+        self.assertEqual(self.valor.ingreso_coordenadas(4, 3, self.tamaño), True)
+
+    def test_posicion_4x4(self):
+        self.tamaño=4
+        self.assertEqual(self.valor.ingreso_coordenadas(2, 4, self.tamaño), True)
+
+    
 
 
 if __name__ == '__main__':
