@@ -12,11 +12,8 @@ class Interfaz():
         else:
             return False
 
-    def ingreso_coordenadas(self, fila, columna, tamano):
-        if(fila > 0 and fila <= tamano and columna > 0 and columna <= tamano):
-            return True
-        else:
-            return False
+    def ingreso_coordenadas(self,fila,columna,tamano):
+        return (columna>0 and columna<=tamano and fila>0 and fila<=9)
 
     def dimension(self, tamano):
         return (tamano == 4 or tamano == 9)
