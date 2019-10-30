@@ -73,7 +73,7 @@ class TestSudoku(unittest.TestCase):
 
     @parameterized.expand([
         (8, 6, '1'),
-        (2, 0, '2'),
+        (2, 0, '0'),
         (2, 8, '4'),
         (8, 3, '2'),
         (7, 7, '3')

@@ -22,14 +22,17 @@ class TestIngreso(unittest.TestCase):
 
     def test_posicion_1(self):
         self.assertEqual(self.valor.ingreso_coordenadas(5, 6, self.tamano), True)
-    
+
     def test_posicion_2(self):
+        self.assertEqual(self.valor.ingreso_coordenadas(6, 6, self.tamano), True)
+    
+    def test_posicion_3(self):
         self.assertEqual(self.valor.ingreso_coordenadas(1, 11, self.tamano), False)
     
-    def test_posicion_3(self):
+    def test_posicion_4(self):
         self.assertEqual(self.valor.ingreso_coordenadas(14, 8, self.tamano), False)
 
-    def test_posicion_3(self):
+    def test_posicion_5(self):
         self.assertEqual(self.valor.ingreso_coordenadas(2, 4, self.tamano), True)
     
     def test_dimension_correcta(self):
@@ -47,7 +50,7 @@ class TestIngreso(unittest.TestCase):
     def escribir_valor_incorrecto_9x9(self):
         self.assertEqual(self.valor.ingreso_numero('x', self.tamano), False)
 
-    def test_posicion_4x4(self):
+    def test_posicion_4x4_2(self):
         
         self.assertEqual(self.valor.ingreso_coordenadas(4, 3, self.tamano_4), True)
 
